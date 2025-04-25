@@ -31,17 +31,20 @@ class Caixa {
 
 const caixas = [new Caixa("Caixa 1"),new Caixa("Caixa 2"),new Caixa("Caixa 3"),new Caixa("Caixa 4")]
 
+
 function valorAleatorio100a300() {
-    return 100+(200*(Math.random()%200));
+    return Math.floor(100+(200*(Math.random()%200)));
 }
 
 function gerarFila() {
     const fila = [];
     for (let i = 0; i<10; i++) {
-        fila.push(valorAleatorio100a300);
+        fila.push(valorAleatorio100a300());
     }
     return fila;
 }
+
+let fila = gerarFila();
 
 function atender(valor) {
     for (let i = 0; i<caixas.length; i++) {
@@ -53,3 +56,23 @@ function atender(valor) {
     }
 }
 
+function proximoFila() {
+    if (fila.length > 0) {
+        atender(fila[0]);
+        fila = fila.slice(1);
+        if (fila.length == 0) {
+            desabilitarBotao();
+        }
+    } 
+}
+
+function renderizarCaixas() {
+    
+}
+function desabilitarBotao() {}
+
+console.log(fila);
+proximoFila();
+console.log(fila);
+proximoFila();
+console.log(fila);
