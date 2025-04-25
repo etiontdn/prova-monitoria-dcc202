@@ -1,3 +1,20 @@
+html {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #161616;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+main > h1 {
+    text-align: center;
+}
+
 .caixas {
     display: flex;
     flex-direction: row;
@@ -27,6 +44,23 @@
     margin:auto;
 }
 
+#botao-atender {
+    padding: 8px 16px;
+    font-size: 16px;
+    background: lightblue;
+    border-radius: 8px;
+    border-width: 0;
+}
+
+#botao-atender:hover {
+    filter:brightness(0.9);
+}
+
+#botao-atender:active {
+    transform: translateY(2px);
+}
+
+
 .fila-container {
     display: flex;
     flex-direction: column;
@@ -37,5 +71,10 @@
 .fila {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     gap: 8px;
+
+    overflow-x: auto;
+    width: 80vw;
+    margin: auto;
 }

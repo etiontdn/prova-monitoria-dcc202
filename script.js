@@ -1,5 +1,7 @@
 "use strict"
 
+
+//Classe caixa com todas as funcionalidades necessárias
 class Caixa {
     nome="";
     atendendo=false;
@@ -36,9 +38,11 @@ class Caixa {
     }
 }
 
+//Criamos nossas 4 Caixas
 const caixas = [new Caixa("Caixa 1"),new Caixa("Caixa 2"),new Caixa("Caixa 3"),new Caixa("Caixa 4")]
-
 console.log(caixas);
+
+
 function valorAleatorio100a300() {
     return Math.floor(100+(200*(Math.random()%200)));
 }
@@ -51,9 +55,12 @@ function gerarFila() {
     return fila;
 }
 
+//Criamos nossa fila aleatória
 let fila = gerarFila();
 console.log(fila);
 
+
+//Tenta atender o cliente representado pelo valor de suas compras
 function atender(valor) {
     let atendido = false;
     for (let i = 0; i<caixas.length; i++) {
@@ -68,6 +75,7 @@ function atender(valor) {
     return atendido;
 }
 
+//Função do botão atender, tentando atender o próximo da fila se possível
 function proximoFila() {
     if (fila.length > 0) {
         let atendido = atender(fila[0]);
@@ -86,6 +94,8 @@ function proximoFila() {
 
 const caixasEl = document.querySelector(".caixas")
 
+
+//Função que renderiza os caixas
 function renderizarCaixas() {
     caixasEl.innerHTML = "";
     for (const caixa of caixas) {
@@ -108,18 +118,24 @@ function renderizarCaixas() {
     }
 }
 
+//Renderização inicial
 renderizarCaixas();
 
 const filaEl = document.querySelector(".fila");
+
+//Renderiza também a fila, representado o cliente pelo valor de suas compras
 function renderizarFila() {
     filaEl.innerHTML = "";
     for (let i = 0; i < fila.length; i++) {
         let el = document.createElement("p");
-        el.innerText = fila[i];
+        el.innerText = "R$" + String(fila[i]);
         if (i != fila.length-1) {
             el.innerText += ", "
         }
         filaEl.appendChild(el);
+    }
+    if (fila.length == 0) {
+        filaEl.innerHTML = "<p>Fila vazia</p>"
     }
 }
 
